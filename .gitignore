@@ -1,11 +1,11 @@
-.vscode
+# dependencies
 node_modules
 
+# build-stage files
 build
+
+# sensitive data
 .env
 
-package-lock.json
-yarn.lock
-
-test.ts
-test.js
+# personal config
+.vscode

@@ -7,7 +7,7 @@ interface Info {
 }
 
 export default {
-  // POST '/auth/login'
+  /** POST '/auth/login' **/
   login: function (req: Request, res: Response): void {
     res.set('Access-Control-Allow-Origin', '*')
 
@@ -39,7 +39,7 @@ export default {
     authUser(req, res)
   },
 
-  // POST 'auth/sign-up'
+  /** POST '/auth/sign-up' **/
   signUp: function (req: Request, res: Response) {
     res.set('Access-Control-Allow-Origin', '*')
 

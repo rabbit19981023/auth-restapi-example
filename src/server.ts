@@ -2,9 +2,12 @@ import express from 'express'
 import passport from './config/passportAuth'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
-import dotenv from 'dotenv'
 import morgan from 'morgan'
 import helmet from 'helmet'
+
+/** Read in ENVs (development mode) **/
+import dotenv from 'dotenv'
+dotenv.config()
 
 /** Database **/
 import db from './config/db'
@@ -28,8 +31,7 @@ class Server {
   private config() {
     const app: express.Application = this.app
 
-    dotenv.config()
-    app.use(morgan('dev'))
+    app.use(morgan('tiny'))
 
     app.use(express.json()) // parsing json data
     app.use(express.urlencoded({ extended: true })) // parsing form data
