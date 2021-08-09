@@ -1,7 +1,7 @@
 {
   "name": "auth-restapi-example",
   "version": "1.0.0",
-  "description": "",
+  "description": "a simple role-base Auth implemented in Passport.js",
   "main": "server.js",
   "scripts": {
     "start": "node ./build/server.js",
