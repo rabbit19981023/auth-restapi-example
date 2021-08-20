@@ -51,11 +51,15 @@ This is a role-based Auth, implemented in Passport.js. It's a RESTful API versio
 1. Sign Up a new user:
 
     ```bash
-    $ curl --request POST --data "username=<username>&password=<password>" http://localhost:<port>/auth/sign-up
+    $ curl --request POST --data "username=admin_username&password=admin_password" http://localhost:<port>/auth/sign-up
+
+    {"status":"ok","username":"admin_username"}
     ```
 
 2. Login:
 
     ```bash
-    $ curl --request POST --data "username=<username>&password=<password>" http://localhost:<port>/auth/login
+    $ curl --request POST --data "username=admin_username&password=admin_password" http://localhost:<port>/auth/login
+
+    {"status":"ok","username":"admin_username"}
     ```
