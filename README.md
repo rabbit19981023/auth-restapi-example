@@ -17,9 +17,9 @@ This is a role-based Auth, implemented in Passport.js. It's a RESTful API versio
 1. set environment variables in `.env` file:
 
     ```.env
-    PORT = <port>
-    MONGODB_URI = <your-mongodb-uri>
-    SESSION_SECRET = <your-session-secret>
+    PORT=<port>
+    MONGODB_URI=<your-mongodb-uri>
+    SESSION_SECRET=<your-session-secret>
     ```
 
 2. install all dependencies version-locked:
