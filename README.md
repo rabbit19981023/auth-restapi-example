@@ -28,13 +28,13 @@ This is a role-based Auth, implemented in Passport.js. It's a RESTful API versio
     $ npm ci
     ```
 
-3. compile all the typescript source files into javascript codes:
+3. build the project (compile all `.ts` files into `.js` files):
 
     ```bash
     $ npm run build
     ```
 
-4. remove all unnecessary devDependencies, leave dependencies only needed in runtime:
+4. install all dependencies version-locked which are only needed in runtime:
 
     ```bash
     $ npm ci --production
