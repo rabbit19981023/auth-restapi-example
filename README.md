@@ -4,7 +4,7 @@ This is a role-based Auth, implemented in Passport.js. It's a RESTful API versio
 
 ## Technologies
 
-- Language : Typescript
+- Language : Node.js, Typescript
 
 - Architecture : MVC-like, RESTful API
 
