@@ -1,49 +1,55 @@
-import mongoose, { Schema, Model, Document } from 'mongoose'
+import mongoose, { Schema, Model, ObjectId } from 'mongoose'
 
-export interface User {
-  role: string,
-  username: string,
-  password: string
-}
-
-export interface UserDoc extends Document {
+interface User {
   role: string,
   username: string,
   password: string
 }
 
 // design a Schema for UserModel
-const userSchema: Schema = new Schema({
+const userSchema = new Schema({
   role: String,
   username: String,
   password: String
 })
 
 // compile our Schema into a Data Model
-const UserModel: Model<UserDoc> = mongoose.model('User', userSchema)
+const userModel = mongoose.model<User>('User', userSchema)
 
 /** UserModel APIs **/
-const findOne = async function (filter: object): Promise<UserDoc | null> {
+const find = async function (filter: object): Promise<User[] | null> {
   return new Promise(async (resolve, reject) => {
     try {
-      const user: UserDoc | null = await UserModel.findOne(filter)
+      const users = await userModel.find(filter)
+      resolve(users)
+    } catch (err) { reject(err) }
+  })
+}
+
+const findOne = async function (filter: object): Promise<User | null> {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const user = await userModel.findOne(filter)
       resolve(user)
     } catch (err) { reject(err) }
   })
 }
 
-const addNewUser = async function (newUser: User): Promise<UserDoc> {
+const addNewUser = async function (newUser: User): Promise<User> {
   return new Promise((resolve, reject) => {
-    const user: UserDoc = new UserModel(newUser)
+    const user = new userModel(newUser)
 
-    user.save((err: mongoose.CallbackError, userDoc: UserDoc) => {
+    user.save((err: mongoose.CallbackError, userDoc: User) => {
       if (err) { reject(err) }
       resolve(userDoc)
     })
   })
 }
 
-export default {
-  findOne: findOne,
-  addNewUser: addNewUser
+const UserModel = {
+  find,
+  findOne,
+  addNewUser
 }
+
+export { User, UserModel }

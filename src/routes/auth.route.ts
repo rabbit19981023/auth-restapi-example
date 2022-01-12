@@ -4,6 +4,7 @@ import authController from '../controllers/auth.controller'
 const router: Router = Router()
 
 /** '/auth' Routes **/
+router.get('/', authController.index)
 router.post('/login', authController.login)
 router.post('/sign-up', authController.signUp)
 

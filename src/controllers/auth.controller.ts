@@ -1,17 +1,27 @@
 import { Request, Response } from 'express'
 import passport from 'passport'
-import { UserDoc } from '../models/user'
+import { User, UserModel } from '../models/user'
 
 interface Info {
   message: string
 }
 
 export default {
+  /** GET '/auth' **/
+  index: async function (req: Request, res: Response): Promise<void> {
+    try {
+      const users = await UserModel.find({})
+      res.json({ 'status': 'ok', users })
+    } catch (err) {
+      res.json({ 'status': 'mongodb error!' })
+    }
+  },
+
   /** POST '/auth/login' **/
   login: function (req: Request, res: Response): void {
     res.set('Access-Control-Allow-Origin', '*')
 
-    const callback = function (err: Error, user: UserDoc, info: Info) {
+    const callback = function (err: Error, user: User, info: Info) {
       // Server Error
       if (err) {
         res.json({ status: 'server error' })
@@ -43,7 +53,7 @@ export default {
   signUp: function (req: Request, res: Response) {
     res.set('Access-Control-Allow-Origin', '*')
 
-    const callback = function (err: Error, user: UserDoc, info: Info) {
+    const callback = function (err: Error, user: User, info: Info) {
       // Server Error
       if (err) {
         res.json({ status: 'server error' })
