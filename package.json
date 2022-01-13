@@ -2,7 +2,6 @@
   "name": "auth-restapi-example",
   "version": "1.0.0",
   "description": "a simple role-base Auth implemented in Passport.js",
-  "main": "server.js",
   "scripts": {
     "build": "./node_modules/typescript/bin/tsc --project tsconfig.server.json",
     "start": "node ./build/server.js",
@@ -15,7 +14,6 @@
     "@types/express": "^4.17.13",
     "@types/express-session": "^1.17.4",
     "@types/morgan": "^1.9.3",
-    "@types/node-fetch": "^2.5.12",
     "@types/passport": "^1.0.7",
     "@types/passport-local": "^1.0.34",
     "@types/passport-strategy": "^0.2.35",

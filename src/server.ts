@@ -3,10 +3,10 @@ import dotenv from 'dotenv'
 import morgan from 'morgan'
 import helmet from 'helmet'
 import db from './config/db'
-import passport from './config/passportAuth'
+import passport from './config/passport'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
-import authRoute from './routes/auth.route'
+import routes from './routes'
 
 class Server {
   private app: express.Application
@@ -34,6 +34,7 @@ class Server {
 
     this.app.use(express.json()) // parsing json data
     this.app.use(express.urlencoded({ extended: true })) // parsing form data
+    this.app.use(helmet())
 
     this.app.use(session({
       secret: process.env.SESSION_SECRET as string,
@@ -45,7 +46,6 @@ class Server {
     this.app.use(passport.initialize())
     this.app.use(passport.session())
 
-    this.app.use(helmet())
     return this
   }
 
@@ -55,11 +55,11 @@ class Server {
   }
 
   private registerRouters(): this {
-    this.app.use('/auth', authRoute)
+    this.app.use('/', routes)
     return this
   }
 }
 
 const server = new Server()
-const PORT: string | number = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 server.listen(PORT, () => console.log(`The Server is Running at PORT: ${PORT}......`))

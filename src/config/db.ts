@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 export default {
-  connect: async function (): Promise<void> {
+  async connect(): Promise<void> {
     const config = {
       useNewUrlParser: true,
       useCreateIndex: true,
